@@ -1,8 +1,10 @@
 server:
   port: 8080
-  servlet:
-    context-path: /
+#  servlet:
+#    context-path: /
 spring:
+  application:
+    name: order
   datasource:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
@@ -20,3 +22,25 @@ spring:
         transaction:
           jta:
             platform: null
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      probes:
+        enabled: true
+  info:
+    env:
+      enabled: true
+  metrics:
+    tags:
+      application: order

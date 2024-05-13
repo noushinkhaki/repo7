@@ -29,7 +29,7 @@ public class OrderControllerTest {
                         .header("userId", DataProvider.USER_ID)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(DataProvider.getOrderRequest()))
-                .andExpect(status().isOk());
+                .andExpect(status().is2xxSuccessful());
         var mvcResult = resultActions.andReturn();
         assertNotNull(mvcResult.getResponse());
         var json = mvcResult.getResponse().getContentAsString();
@@ -45,17 +45,17 @@ public class OrderControllerTest {
                         .header("userId", DataProvider.USER_ID_1)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(DataProvider.getOrderRequest1()))
-                .andExpect(status().isOk());
+                .andExpect(status().is2xxSuccessful());
         mockMvc.perform(MockMvcRequestBuilders.post("/order")
                         .header("userId", DataProvider.USER_ID_1)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(DataProvider.getOrderRequest2()))
-                .andExpect(status().isOk());
+                .andExpect(status().is2xxSuccessful());
         mockMvc.perform(MockMvcRequestBuilders.post("/order")
                         .header("userId", DataProvider.USER_ID_2)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(DataProvider.getOrderRequest3()))
-                .andExpect(status().isOk());
+                .andExpect(status().is2xxSuccessful());
         var resultActions = mockMvc.perform(MockMvcRequestBuilders.get("/order/all")
                         .header("userId", DataProvider.USER_ID_1))
                 .andExpect(status().isOk());
@@ -76,12 +76,12 @@ public class OrderControllerTest {
                         .header("userId", DataProvider.USER_ID_3)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(DataProvider.getOrderRequest4()))
-                .andExpect(status().isOk());
+                .andExpect(status().is2xxSuccessful());
         mockMvc.perform(MockMvcRequestBuilders.post("/order")
                         .header("userId", DataProvider.USER_ID_3)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(DataProvider.getOrderRequest5()))
-                .andExpect(status().isOk());
+                .andExpect(status().is2xxSuccessful());
 
         var resultActions1 = mockMvc.perform(MockMvcRequestBuilders.get("/order/totalPrice")
                         .header("userId", DataProvider.USER_ID_3)

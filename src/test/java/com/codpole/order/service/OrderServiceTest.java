@@ -3,6 +3,7 @@ package com.codpole.order.service;
 import com.codpole.order.model.Item;
 import com.codpole.order.model.ItemRequest;
 import com.codpole.order.model.Order;
+import com.codpole.order.repository.ItemRepository;
 import com.codpole.order.repository.OrderRepository;
 import com.codpole.order.util.DataProvider;
 import org.junit.jupiter.api.Test;
@@ -24,6 +25,9 @@ public class OrderServiceTest {
 
     @Mock
     OrderRepository orderRepository;
+
+    @Mock
+    ItemRepository itemRepository;
 
     @InjectMocks
     OrderService orderService;
